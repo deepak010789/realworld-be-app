@@ -7,4 +7,4 @@ WebTest
 factory-boy
 # For python 3
 Faker
-fastapi==0.85.0
+fastapi
