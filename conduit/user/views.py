@@ -11,6 +11,9 @@ from conduit.profile.models import UserProfile
 from .models import User
 from .serializers import user_schema
 
+from fastapi.responses import JSONResponse
+from fastapi import status
+
 blueprint = Blueprint('user', __name__)
 
 
@@ -64,3 +67,8 @@ def update_user(**kwargs):
         kwargs['updated_at'] = user.created_at.replace(tzinfo=None)
     user.update(**kwargs)
     return user
+
+
+@blueprint.route('/healthcheck', methods=('GET',))
+def healthcheck():
+    return JSONResponse(content={"service": "ok"}, status_code=status.HTTP_200_OK)
