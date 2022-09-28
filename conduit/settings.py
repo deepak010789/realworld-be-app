@@ -2,7 +2,8 @@
 """Application configuration."""
 import os
 from datetime import timedelta
-
+import awswrangler.secretsmanager as sm
+import boto3
 
 class Config(object):
     """Base configuration."""
@@ -35,8 +36,9 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
-                                             'postgresql://localhost/example')
+    session = boto3.session.Session(region_name='ap-southeast-1')
+    SQLALCHEMY_DATABASE_URI = sm.get_secret_json("toptal-prod-backend", session).get("DATABASE_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://localhost/example')
 
 
 class DevConfig(Config):
