@@ -13,7 +13,7 @@ pipeline {
             steps {
                 dir('deepak010789') {
                     deleteDir()
-                    git credentialsId: 'infra360-pem', poll: false, url: 'git@git.toptal.com:aron.szekely/deepak010789.git', branch: "master"
+                    git credentialsId: 'infra360-pem', poll: false, url: 'git@git.toptal.com:aron.szekely/deepak010789.git', branch: "main"
                 }
             }
         }
