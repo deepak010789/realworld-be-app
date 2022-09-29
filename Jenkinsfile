@@ -47,7 +47,6 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     dir("${env.WORKSPACE}/deepak010789/api-regression") {
-                        sh "sudo npm i -g npx"
                         sh "chmod 755 ./run-api-tests.sh && ./run-api-tests.sh"
                     }
                 }
