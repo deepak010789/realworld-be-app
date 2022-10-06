@@ -12,7 +12,7 @@ app = create_app(CONFIG)
 
 app.config['ELASTIC_APM'] = {
     'SERVICE_NAME': 'FlaskApp',
-    'SERVER_URL': 'http://10.1.1.180:8200'
+    'SERVER_URL': 'http://10.1.1.84:8200'
 }
 
 apm = ElasticAPM(app)
